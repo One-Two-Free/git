@@ -1,0 +1,105 @@
+//config
+git config --list
+git config --global user.name "Albert"
+git config --global user.email "ctrl-alt@yandex.ru"
+
+
+//.gitignore - is fail записываем файлы которые гит будет игнорировать
+#comment
+name fail
+*.txt
+# игнор содержимое папки
+temp/*
+
+
+// смотрим изменения которые не в стэйджинг - modifyi
+git diff
+// смотрим изменения которые в стэйджинг - которая пойдет в коммит
+git diff --cached
+
+
+// убрать из отслеживаемых файлов
+git rm nameOfFile
+
+// переименовать файл oldFile в новое имя newFile
+git mv oldFile newFile
+
+// просмотр сообщений
+git log
+git log -p [-1]// просмотр сообщений с коммитами, в цифре количество коммитов
+git log --stat    // статистика
+git log --pretty=[oneline short full fuller]  // 
+git log --graph //
+git log --since=2.weeks
+git log --since=20.minutes
+
+// коммит в предыдущий коммит, т.е. новый коммит не создается
+git commit --amend
+
+
+
+
+// удаленный репозиторий
+  git remote add origin https://github.com//hacker85/...
+// список удаленных репозиторий
+  git remote -v
+// достать данные из удаленного репозитория, потом надо merge
+  git fetch
+  git fetch --all
+// fetch и merge вместе
+  git pull
+// отправить коммит на удаленный репозиторий
+  git push origin master
+// подробная информация
+  git remote show origin
+// rename сылки на удаленку
+  git remote rename origin newName
+// удалить сылку
+  git remote rm origin
+
+
+//alias
+git config --global alias.list "config --list"
+git config --global --unset alias.list
+git config --list
+
+
+
+// ветоки
+  git branch -v
+  git branch newBranch
+  git checkout newBranch
+  git checkout -b nameBranch
+// удаление мягкое, сильное
+  git branch -d delNameBranch
+  git branch -D delNameBranch
+// слить текущую ветку с other
+  git merge otherBranch
+
+// удаленные ветки
+  git ls-remote origin
+  git remote show origin
+  git branch -vv
+// создать удаленную ветку на основе локальной ветки
+  git push origin nameBranch:newBranchOrigin
+// установить связь локальной и удаленной ветки
+  git checkout --track origin/newBranchOrigin
+  git branch -u origin/Branch
+// удалить
+  git push origin --delete nameBranch
+
+
+// подробный просмотр
+  git reflog
+
+
+
+
+
+
+
+
+
+
+
+

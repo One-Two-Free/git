@@ -1,0 +1,126 @@
+﻿cd	перейти к папке
+cd /c/Server/tmp
+
+ls -1	содержимое папки
+cat		выводит содержимое файла
+pwd   полный путь к текущей папке
+
+git help checkout	справка по checkout
+
+git config --global user.name "Albert"
+git config --global user.name "ctrl-alt@yandex.ru"
+
+git config --list	проверить настройки
+
+cat ~/.gitconfig	посмотреть содержимое
+
+git init	инициализировать репозиторий
+git status	состояние репозитория
+
+commit	сохранение состояния (save)
+чтобы сохранить изменения надо их проиндексировать
+
+git add .	 добавить все файлы из текущей директории введите
+git add --all	 добавить файлы из текущей директории и из всех поддиректориев
+git add .	проиндексировать всю папку
+			. означает папку
+
+git commit -m "коментарий"
+git diff	что поменялось
+
+делать коммиты когда состояние обрело оконченный вид
+
+git log		история коммитов (q закрывает log, листать стрелками)  -1 последний коммит
+
+зная хэш коммита можно откатится к нему
+
+git show HASH	какие изменения зафиксированы в коммите HASH
+
+
+git checkout fail	возвращает состояние последнего коммита для файла fail
+
+git checkout HASH FAIL	возвращает файл в состояние коммита HASH
+
+git diff --staged	проиндексированные изменения(те которые git add)
+
+git reset HEAD index.html	отменить индексацию изменнений в index.html
+
+git commit --amend -m "Коммит"	изменить последний коммит
+
+git rm css/test.css	удалить файл из коммита
+
+
+
+ветвление
+ветки история разделилась
+
+git log --oneline	коммиты в одну строку
+git cat-file -p 6012fc0		содержимое коммита
+
+git checkout HASH	переключить все файлы на коммит HASH
+история показывается до текущего коммита
+
+git checkout -b yellow-design HASH	создать ветку yellow-design на коммите HASH
+ветка это указатель на коммит
+
+git log --oneline --all		показывает log всего
+слово HEAD указывает на текущее положение
+
+git log --oneline --all --graph		рисует схему
+
+git merge yellow-design -m "Объеденили жёлтый дизайн и мастер"
+merge влить yellow-design в текущую ветку
+
+
+
+
+
+gitHab
+
+команда git remote управляет удаленными репозиториями
+git remote add добавляет удаленный репозиторий (копия вашего проекта который находится в интернете) под именем origin и с адресом который скопировали из github
+git remote add origin git@github.com:alicehtml/keksholidays.git
+git push -u origin master  отправить коммиты из локальной ветки в удаленный репозиторий
+                            -u устанавливает связь между локальной веткой и удаленной
+
+посмотреть дабавленные репозитории
+git remote -v  
+
+публичный ключ идет на github
+приватный ключ
+
+mkdir .ssh    создать папку .ssh
+cd .ssh       перейти в папку .ssh
+
+ssh-keygen -t rsa -b 4096 -C "ctrl-alt@yandex.ru"    генерация ключа
+предложит имя ключа 
+github-2018-11-16.pub   публичный ключ
+
+поздороваться с github
+ssh -T -i /d/_skladchik/_git/.ssh/github-2018-11-16 git@github.com
+
+
+
+
+git push origin master  отправить изменения имя удаленного репозитория, 
+имя ветки в удаленном репозитории куда отправить текущую локальную ветку
+
+git push origin local:remote
+отправляем локальную ветку в удаленную      git push origin cmments:comments
+
+git push origin :cmments    удалить удаленную ветку
+
+git branch -m comments    переименовать текущую ветку
+
+
+git pull origin master    получить изменения из удаленного репозитория origin из ветки master  в текущую ветку
+
+
+git fetch origin    получить изменения из удаленного репозитория origin
+
+git checkout -b comments origin/comments    создать ветку comments которая будет указывать на origin/comments
+
+
+git branch --set-upstream-to=origin/comments    связываем локальную ветку с удаленной
+
+git branch -vv    какие ветки связаны с удаленными
